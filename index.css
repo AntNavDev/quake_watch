@@ -1,0 +1,40 @@
+.quake_data {
+    margin: 1.5em;
+}
+.no_results {
+    font-size: 1.5em;
+}
+.alerted {
+
+}
+.felt {
+    /*background-color: rgba(255, 0, 0, 0.25);*/
+    /*display: inline-block;*/
+}
+#map {
+    height: 100%;
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2em;
+    margin-right: 2em;
+    text-align: center;
+}
+#my_ui, #content, #user_key {
+    display: inline-block;
+    vertical-align: top;
+}
+#content {
+    max-width: 20%;
+}
+#user_key {
+    background-color: #D9DFD8;
+    padding: 1em;
+    min-height: 30%;
+    max-width: 10%;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}

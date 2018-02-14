@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+            integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+            crossorigin="anonymous">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <title>Quake Watch</title>
+</head>
+<body>   
+    <div id="map"></div>
+    <div id="my_ui">
+        <div id="buttons">
+            <form>
+                <label for="latitude_input">Latitude:<input id="latitude_input" type="text" name="latitude" class="location_data" required></label><br>
+                <label for="longitude_input">Longitude:<input id="longitude_input" type="text" name="longitude" class="location_data" required></label><br>
+                <label for="radius_input">Radius(in kilometers):<input id="radius_input" type="text" name="radius" class="location_data" required></label><br>
+                <button id="get_quake_results_button" class="btn btn-danger">Push</button>
+            </form>
+        </div>
+    </div>  
+    <div id="content">
+    </div>
+    <div id="user_key">
+        <h3>Key:</h3>
+        <p>Example Coordinates:</p>
+        <p>California:<br>Latitude = 37.575<br>Longitude = -118.840</p>
+        <p>Argentina:<br>Latitude = -38.4161<br>Longitude = -63.6167</p>
+    </div>
+</body>
+<footer>
+    <script type="text/javascript" src="./google_marker_clusterer/markerclusterer.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=THIS_WOULD_BE_YOUR_API_KEY&callback=initMap"></script>
+</footer>
+</html>
