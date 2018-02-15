@@ -37,18 +37,36 @@ function getZoomLevel(radius)
     }
 }
 
+function reformatDate(date)
+{
+    var temp = date.split('/');
+
+    return $.datepicker.formatDate('yy-mm-dd', new Date(temp[2], (temp[0] - 1), temp[1]));
+}
+
 $(document).ready(function(){
     var regionIndicator;
     var markerCluster;
 
+    $('#start_date').datepicker();
+    $('#end_date').datepicker();
+
     $('#get_quake_results_button').attr('disabled', true);
-    if(isInputPopulated('#latitude_input') && isInputPopulated('#longitude_input') && isInputPopulated('#radius_input'))
+    if(isInputPopulated('#latitude_input') && 
+        isInputPopulated('#longitude_input') &&
+        isInputPopulated('#radius_input') &&
+        isInputPopulated('#start_date') &&
+        isInputPopulated('#end_date'))
     {
         $('#get_quake_results_button').attr('disabled', false);
     }
 
     $('input[class="location_data"]').keyup(function(){
-        if(isInputPopulated('#latitude_input') && isInputPopulated('#longitude_input') && isInputPopulated('#radius_input'))
+        if(isInputPopulated('#latitude_input') && 
+            isInputPopulated('#longitude_input') &&
+            isInputPopulated('#radius_input') &&
+            isInputPopulated('#start_date') &&
+            isInputPopulated('#end_date'))
         {
             $('#get_quake_results_button').attr('disabled', false);
         }
@@ -60,12 +78,16 @@ $(document).ready(function(){
 
     $('#get_quake_results_button').on('click', function(event){
         event.preventDefault();
+        var start_date = reformatDate($('#start_date').val());
+        var end_date = reformatDate($('#end_date').val());
         var my_longitude = $('#longitude_input').val();
         var my_latitude = $('#latitude_input').val();
         var my_radius = $('#radius_input').val();
         var quake_locations = Array();
         var labels = Array();
-        var my_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2018-02-13&endtime=2018-02-14&latitude=' + my_latitude + '&longitude=' + my_longitude + '&maxradiuskm=' + my_radius;
+        console.log(start_date);
+        console.log(end_date);
+        var my_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=' + start_date + '&endtime=' + end_date + '&latitude=' + my_latitude + '&longitude=' + my_longitude + '&maxradiuskm=' + my_radius;
         if(regionIndicator)
         {
             regionIndicator.setMap(null);
