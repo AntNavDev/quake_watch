@@ -48,8 +48,30 @@ $(document).ready(function(){
     var regionIndicator;
     var markerCluster;
 
-    $('#start_date').datepicker();
-    $('#end_date').datepicker();
+    $('#start_date').datepicker({
+        onSelect: function(){
+            if(isInputPopulated('#latitude_input') && 
+                isInputPopulated('#longitude_input') &&
+                isInputPopulated('#radius_input') &&
+                isInputPopulated('#start_date') &&
+                isInputPopulated('#end_date'))
+            {
+                $('#get_quake_results_button').attr('disabled', false);
+            }
+        }
+    });
+    $('#end_date').datepicker({
+        onSelect: function(){
+            if(isInputPopulated('#latitude_input') && 
+                isInputPopulated('#longitude_input') &&
+                isInputPopulated('#radius_input') &&
+                isInputPopulated('#start_date') &&
+                isInputPopulated('#end_date'))
+            {
+                $('#get_quake_results_button').attr('disabled', false);
+            }
+        }
+    });
 
     $('#get_quake_results_button').attr('disabled', true);
     if(isInputPopulated('#latitude_input') && 
@@ -85,8 +107,6 @@ $(document).ready(function(){
         var my_radius = $('#radius_input').val();
         var quake_locations = Array();
         var labels = Array();
-        console.log(start_date);
-        console.log(end_date);
         var my_url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=' + start_date + '&endtime=' + end_date + '&latitude=' + my_latitude + '&longitude=' + my_longitude + '&maxradiuskm=' + my_radius;
         if(regionIndicator)
         {
@@ -100,7 +120,7 @@ $(document).ready(function(){
             fillOpacity: 0.35,
             map: map,
             center: {lat: parseFloat(my_latitude), lng: parseFloat(my_longitude)},
-            radius: parseFloat(my_radius) * 1000
+            radius: parseFloat(my_radius) * 1010
         });
         $.ajax({
             method: "GET",

@@ -36,8 +36,8 @@
     <div id="my_ui">
         <div id="buttons">
             <form>
-                <label for="start_date">Start Date:<br><input id="start_date" type="text" name="start_date"></label><br>
-                <label for="end_date">End Date:<br><input id="end_date" type="text" name="end_date"></label><br>
+                <label for="start_date">Start Date:<br><input id="start_date" type="text" name="start_date" class="location_data" required></label><br>
+                <label for="end_date">End Date:<br><input id="end_date" type="text" name="end_date" class="location_data" required></label><br>
                 <label for="latitude_input">Latitude:<br><input id="latitude_input" type="text" name="latitude" class="location_data" required></label><br>
                 <label for="longitude_input">Longitude:<br><input id="longitude_input" type="text" name="longitude" class="location_data" required></label><br>
                 <label for="radius_input">Radius(in kilometers):<br><input id="radius_input" type="text" name="radius" class="location_data" required></label><br>
@@ -57,6 +57,6 @@
 <footer>
     <script type="text/javascript" src="./google_marker_clusterer/markerclusterer.js"></script>
     <script type="text/javascript" src="./index.js"></script>
-    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=ADD_YOUR_API_KEY_HERE&callback=initMap"></script>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=ADD_API_KEY_HERE&callback=initMap"></script>
 </footer>
 </html>
