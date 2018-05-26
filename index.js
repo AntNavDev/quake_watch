@@ -41,20 +41,22 @@ $(document).ready(function(){
     var regionIndicator;
     var markerCluster;
 
+    $("#pac_input").val("");
+
     var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -33.8688, lng: 151.2195},
         zoom: 13
     });
 
 
-    var card = document.getElementById('pac-card');
-    var input = document.getElementById('pac-input');
-    var types = document.getElementById('type-selector');
+    var card = document.getElementById('pac_card');
+    var input = document.getElementById('pac_input');
+    var types = document.getElementById('type_selector');
 
     var autocomplete = new google.maps.places.Autocomplete(input);
 
     var infowindow = new google.maps.InfoWindow();
-    var infowindowContent = document.getElementById('infowindow-content');
+    var infowindowContent = document.getElementById('infowindow_content');
     infowindow.setContent(infowindowContent);
 
     autocomplete.addListener('place_changed', function(){
@@ -76,10 +78,15 @@ $(document).ready(function(){
             ].join(' ');
         }
 
-        infowindowContent.children['place-name'].textContent = place.name;
-        infowindowContent.children['place-address'].textContent = address;
-        infowindowContent.children['place-lng'].textContent = found_lng;
-        infowindowContent.children['place-lat'].textContent = found_lat;
+        infowindowContent.children['place_name'].textContent = place.name;
+        infowindowContent.children['place_address'].textContent = address;
+        infowindowContent.children['place_lng'].textContent = found_lng;
+        infowindowContent.children['place_lat'].textContent = found_lat;
+
+        if(window.confirm("Would you like to populate the quake coordinates with the lookup values?")){
+            $("#latitude_input").val(found_lat);
+            $("#longitude_input").val(found_lng);
+        }
     });
 
 
