@@ -24,7 +24,7 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" type="text/css" href="./index.css">
-    <title>Quake Watch</title>
+    <title>There's color everywhere!</title>
 </head>
 <body>   
     <div id="map"></div>
@@ -35,8 +35,53 @@
                 <label for="longitude_input">Longitude:<input id="longitude_input" type="text" name="longitude" class="location_data" required></label><br>
                 <label for="radius_input">Radius(in kilometers):<input id="radius_input" type="text" name="radius" class="location_data" required></label><br>
                 <button id="get_quake_results_button" class="btn btn-danger">Push</button>
+                <a href="/" id="go_home" class="btn btn-primary">Home</a>
             </form>
         </div>
+        
+
+
+
+
+
+        <div class="pac-card" id="pac-card">
+            <div>
+              <div id="title">
+                Autocomplete search
+              </div>
+              <div id="type-selector" class="pac-controls">
+                <input type="radio" name="type" id="changetype-all" checked="checked">
+                <label for="changetype-all">All</label>
+      
+                <input type="radio" name="type" id="changetype-establishment">
+                <label for="changetype-establishment">Establishments</label>
+      
+                <input type="radio" name="type" id="changetype-address">
+                <label for="changetype-address">Addresses</label>
+      
+                <input type="radio" name="type" id="changetype-geocode">
+                <label for="changetype-geocode">Geocodes</label>
+              </div>
+            </div>
+            <div id="pac-container">
+              <input id="pac-input" type="text"
+                  placeholder="Enter a location">
+            </div>
+        </div>
+      
+        <div id="infowindow-content">
+            <span id="place-name"  class="title"></span><br>
+            <span id="place-address"></span>
+        </div>
+          
+
+
+        
+
+
+
+
+
     </div>  
     <div id="content">
     </div>
@@ -48,8 +93,9 @@
     </div>
 </body>
 <footer>
+
     <script type="text/javascript" src="./google_marker_clusterer/markerclusterer.js"></script>
     <script type="text/javascript" src="./index.js"></script>
-    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=THIS_WOULD_BE_YOUR_API_KEY&callback=initMap"></script>
+    <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR API KEY&callback=initMap&libraries=places"></script>
 </footer>
 </html>
