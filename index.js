@@ -59,12 +59,14 @@ $(document).ready(function(){
 
     autocomplete.addListener('place_changed', function(){
         var place = autocomplete.getPlace();
+        var found_lng = place.geometry.location.lng().toFixed(3);
+        var found_lat = place.geometry.location.lat().toFixed(3);
 
         if(!place.geometry){
             window.alert("No details available for input: '" + place.name + "'");
             return;
         }
-
+        
         var address = '';
         if (place.address_components) {
             address = [
@@ -76,7 +78,8 @@ $(document).ready(function(){
 
         infowindowContent.children['place-name'].textContent = place.name;
         infowindowContent.children['place-address'].textContent = address;
-
+        infowindowContent.children['place-lng'].textContent = found_lng;
+        infowindowContent.children['place-lat'].textContent = found_lat;
     });
 
 
